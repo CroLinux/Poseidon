@@ -1,16 +1,29 @@
 package com.nnk.springboot.domain;
 
-import org.hibernate.validator.constraints.Length;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-//import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import java.sql.Timestamp;
-
+import jakarta.validation.constraints.Positive;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "curvepoint")
 public class CurvePoint {
-    // TODO: Map columns in data table CURVEPOINT with corresponding java fields
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@Positive(message = "Must be a positive number")
+	private Integer curveId;
+	
+	private LocalDate asOfDate;
+	private Double term;
+	private Double value;
+	private LocalDate creationDate;
+	
 }
