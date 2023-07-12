@@ -1,3 +1,4 @@
+/Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/configuration/SecurityConfig.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/RuleNameRepository.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/UserRepository.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/LoginController.java
@@ -10,11 +11,13 @@
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/RuleName.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/TradeRepository.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/BidListController.java
+/Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/CustomUserDatailsService.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/CurvePointRepository.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/CurveController.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/User.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/Trade.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/CurvePoint.java
+/Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/services/CurvePointService.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/HomeController.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/Application.java
 /Users/antedrenski/git/Poseidon/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/RatingController.java

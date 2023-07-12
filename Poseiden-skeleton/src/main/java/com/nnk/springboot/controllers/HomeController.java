@@ -11,6 +11,7 @@ public class HomeController
 	public String home(Model model)
 	{
 		return "home";
+		//return "redirect:/login";
 	}
 
 	@RequestMapping("/admin/home")
@@ -18,6 +19,8 @@ public class HomeController
 	{
 		return "redirect:/bidList/list";
 	}
+	
+	
 
 
 }
