@@ -31,8 +31,6 @@ public class CurveController {
 	public String home(Model model, Authentication authentication) {
 		Iterable<CurvePoint> curvePoints = curvePointService.getCurvePointsList();
 		String remoteUser = userService.getCurrentUser(authentication);
-		System.out.println("RemoteUser " + remoteUser);
-		System.out.println("RESULT" + curvePoints);
 		model.addAttribute("curvePoints", curvePoints);
 		model.addAttribute("remoteUser", remoteUser);
 		return "curvePoint/list";
