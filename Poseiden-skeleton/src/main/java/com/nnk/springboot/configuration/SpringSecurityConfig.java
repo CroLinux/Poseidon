@@ -27,8 +27,6 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SpringSecurityConfig  {
 
-
-
     @Autowired
     private UserRepository userRepository;
 
@@ -39,15 +37,11 @@ public class SpringSecurityConfig  {
     public AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
-
-
-
  
 	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests
-                .requestMatchers("/", "/css/*")
+                .requestMatchers("/", "/css/*", "/login")
                 .permitAll()
                 .requestMatchers("/user/list")
                 .hasAuthority("ADMIN")
@@ -55,7 +49,6 @@ public class SpringSecurityConfig  {
                 .formLogin(login -> login
                         .failureUrl("/login?error")
                         .defaultSuccessUrl("/bidList/list")
-
                         .permitAll())
                 .logout(logout -> logout
                         .invalidateHttpSession(true).clearAuthentication(true)
@@ -65,7 +58,6 @@ public class SpringSecurityConfig  {
         http.authenticationProvider(authentication());
         return http.build();
     }
-
 
     @Bean
     public DaoAuthenticationProvider authentication() {
