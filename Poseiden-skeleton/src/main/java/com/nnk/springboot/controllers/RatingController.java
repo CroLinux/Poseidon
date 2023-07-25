@@ -5,6 +5,7 @@ import com.nnk.springboot.services.RatingService;
 import com.nnk.springboot.services.UserService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 public class RatingController {
 	
@@ -34,21 +36,26 @@ public class RatingController {
 		String remoteUser = userService.getCurrentUser(authentication);
 		model.addAttribute("ratings", ratings);
 		model.addAttribute("remoteUser", remoteUser);
+		log.info("Page rating/list called by user : " + remoteUser + " list displayed: " + ratings);
         return "rating/list";
     }
 
     @GetMapping("/rating/add")
     public String addRatingForm(Rating rating) {
+    	log.info("Page rating/add called");
         return "rating/add";
     }
 
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
     	if (!result.hasErrors()) {
+    		log.info("Page rating/validate called without error");
 			ratingService.saveRating(rating);
+			log.info("New rating added: " + rating);
 			model.addAttribute("ratings", ratingService.getRatingsList());
 			return "redirect:/rating/list";
 		}
+    	log.info("Page rating/validate called but error");
         return "rating/add";
     }
 
@@ -57,6 +64,7 @@ public class RatingController {
     	Optional<Rating> ratingOptional = ratingService.getRatingById(id);
 		Rating ratingToUpdate = ratingOptional.orElse(new Rating());
 		model.addAttribute("rating", ratingToUpdate);
+		log.info("Page rating/update called for: " + ratingToUpdate);
         return "rating/update";
     }
 
@@ -67,8 +75,10 @@ public class RatingController {
 			rating.setId(id);
 			ratingService.saveRating(rating);
 			model.addAttribute("ratings", ratingService.getRatingsList());
+			log.info("rating updated without error " + rating);
 			return "redirect:/rating/list";
     	}
+    	log.info("Can't update rating due to error");
         return "redirect:/rating/list";
     }
 
@@ -77,6 +87,8 @@ public class RatingController {
     	Optional<Rating> ratingOptional = ratingService.getRatingById(id);
 		Rating ratingToDelete = ratingOptional.orElse(new Rating());
 		ratingService.deleteRating(ratingToDelete);
+		log.info("Page rating/delete called for: " + ratingToDelete);
+		log.info("rating deleted");
         return "redirect:/rating/list";
     }
 }

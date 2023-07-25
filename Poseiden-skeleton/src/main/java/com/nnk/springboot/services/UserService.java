@@ -62,9 +62,7 @@ public class UserService {
      * @return
      */
     public String getCurrentUser(Authentication authentication){
-    	System.out.println("authentication " + authentication);
         String userName = authentication.getName();
-        System.out.println("authentication userName " + userName);
         return userName;
     }
 
