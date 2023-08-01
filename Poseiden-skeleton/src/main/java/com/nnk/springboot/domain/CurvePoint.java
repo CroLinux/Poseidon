@@ -40,6 +40,13 @@ public class CurvePoint {
 		// Empty constructor is used by JPA to create entities
 	}
 
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param curveId
+	 * @param term
+	 * @param value
+	 */
 	public CurvePoint(Integer curveId, Double term, Double value) {
 		this.curveId = curveId;
 		this.term = term;

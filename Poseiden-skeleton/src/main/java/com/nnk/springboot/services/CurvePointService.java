@@ -44,7 +44,7 @@ public class CurvePointService {
     }
 
     /**
-     * Delete the specified curve list from the database.
+     * Delete the specified curve point from the database.
      * 
      * @param curvePoint
      */

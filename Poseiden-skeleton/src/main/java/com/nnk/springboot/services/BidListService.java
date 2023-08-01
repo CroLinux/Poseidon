@@ -10,28 +10,45 @@ import com.nnk.springboot.repositories.BidListRepository;
 
 @Service
 public class BidListService {
-	
+
 	@Autowired
 	private BidListRepository bidListRepository;
-	
 
-    public Iterable<BidList> getBidListsList() {
-        return bidListRepository.findAll();
-    }
+	/**
+	 * Get all the Bid list from the database
+	 * 
+	 * @return
+	 */
+	public Iterable<BidList> getBidListsList() {
+		return bidListRepository.findAll();
+	}
 
+	/**
+	 * Save/Modify a bid list into the database
+	 * 
+	 * @param bidList
+	 * @return
+	 */
+	public BidList saveBidList(BidList bidList) {
+		return bidListRepository.save(bidList);
+	}
 
-    public BidList saveBidList(BidList bidList) {
-        return bidListRepository.save(bidList);
-    }
+	/**
+	 * Get a specific bid list from the database
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Optional<BidList> getBidListById(Integer id) {
+		return bidListRepository.findById(id);
+	}
 
-
-    public Optional<BidList> getBidListById(Integer id) {
-        return bidListRepository.findById(id);
-    }
-
-
-    public void deleteBidList(BidList bidList) {
-        bidListRepository.delete(bidList);
-    }
+	/**
+	 * Delete a specific bid list from the database
+	 * @param bidList
+	 */
+	public void deleteBidList(BidList bidList) {
+		bidListRepository.delete(bidList);
+	}
 
 }

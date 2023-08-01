@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.Arrays;
 
 @Configuration
@@ -41,13 +42,12 @@ public class SpringSecurityConfig  {
 	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests
-                .requestMatchers("/", "/css/*", "/login")
+                .requestMatchers("/", "/home", "/css/*", "/login", "/error")
                 .permitAll()
                 .requestMatchers("/user/list")
                 .hasAuthority("ADMIN")
                 .anyRequest().authenticated())
                 .formLogin(login -> login
-                        .failureUrl("/login?error")
                         .defaultSuccessUrl("/bidList/list")
                         .permitAll())
                 .logout(logout -> logout
@@ -55,10 +55,40 @@ public class SpringSecurityConfig  {
                         .logoutRequestMatcher(new AntPathRequestMatcher("/app-logout"))
                         .logoutSuccessUrl("/login")
                         .permitAll());
-        http.authenticationProvider(authentication());
+        http.authenticationProvider(authentication());       
         return http.build();
     }
+	/**
+ 	@Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+         http.csrf(withDefaults())
+                 .authorizeHttpRequests((requests) -> requests
+                                 .requestMatchers("/login").permitAll()
+                                 .requestMatchers("/").permitAll()
+                                 .requestMatchers("/css/**").permitAll()
+                                 .requestMatchers("/home").permitAll()
+                                 .requestMatchers("/error").permitAll()
+                                 .requestMatchers("/user/list").hasAuthority("ADMIN")
+                                 .anyRequest().authenticated()
+                 )
+                 .formLogin((form) -> form
+                		    .loginProcessingUrl("/login")
+                                 .defaultSuccessUrl("/bidList/list")
+                                 .permitAll()
+                 )
+                 .logout((logout) -> logout
 
+                         .invalidateHttpSession(true).clearAuthentication(true)
+                		    .deleteCookies("JSESSIONID", "remember-me") // Optionally, specify additional cookies you want to delete
+                		    .deleteCookies()
+                		    .clearAuthentication(true)
+                		    .invalidateHttpSession(true)
+                		    .logoutSuccessUrl("/login")
+                		    .permitAll())
+                 .exceptionHandling(handling -> handling.accessDeniedPage("/access-denied"));
+         return http.build();
+     }
+*/
     @Bean
     public DaoAuthenticationProvider authentication() {
         DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();

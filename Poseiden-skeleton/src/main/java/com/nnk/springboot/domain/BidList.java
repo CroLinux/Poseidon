@@ -93,6 +93,13 @@ public class BidList {
         // Empty constructor is used by JPA to create entities
     }
 	
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param account
+	 * @param type
+	 * @param bidQuantity
+	 */
 	public BidList(String account, String type, Double bidQuantity ) {
         this.account = account;
         this.type = type;

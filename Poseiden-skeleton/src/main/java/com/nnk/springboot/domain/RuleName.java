@@ -42,6 +42,16 @@ public class RuleName {
 		// Empty constructor is used by JPA to create entities
 	}
 
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param name
+	 * @param description
+	 * @param json
+	 * @param template
+	 * @param sqlStr
+	 * @param sqlPart
+	 */
 	public RuleName(String name, String description, String json, String template, String sqlStr, String sqlPart) {
 		this.name = name;
 		this.description = description;

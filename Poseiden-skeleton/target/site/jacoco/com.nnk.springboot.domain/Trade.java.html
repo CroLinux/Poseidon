@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Trade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.domain</a> &gt; <span class="el_source">Trade.java</span></div><h1>Trade.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.domain;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import lombok.Data;
+
+@Entity
+<span class="pc bnc" id="L16" title="All 174 branches missed.">@Data</span>
+@Table(name = &quot;trade&quot;)
+public class Trade {
+    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = &quot;tradeId&quot;)
+	private Integer tradeId;
+
+	@Column(name = &quot;account&quot;)
+	@NotBlank(message = &quot;Account is mandatory&quot;)
+	private String account;
+
+	@Column(name = &quot;type&quot;)
+	@NotBlank(message = &quot;Type is mandatory&quot;)
+	private String type;
+
+	@Column(name = &quot;buyQuantity&quot;)
+	@Positive(message = &quot;Must be a positive number&quot;)
+	private Double buyQuantity;
+
+	@Column(name = &quot;sellQuantity&quot;)
+	private Double sellQuantity;
+	
+	@Column(name = &quot;buyPrice&quot;)
+	private Double buyPrice;
+	
+	@Column(name = &quot;sellPrice&quot;)
+	private Double sellPrice;
+	
+	@Column(name = &quot;benchmark&quot;)
+	private String benchmark;
+	
+	@Column(name = &quot;tradeDate&quot;)
+	private LocalDate tradeDate;
+	
+	@Column(name = &quot;security&quot;)
+	private String security;
+	
+	@Column(name = &quot;status&quot;)
+	private String status;
+	
+	@Column(name = &quot;trader&quot;)
+	private String trader;
+	
+	@Column(name = &quot;book&quot;)
+	private String book;
+	
+	@Column(name = &quot;creationName&quot;)
+	private String creationName;
+	
+	@Column(name = &quot;creationDate&quot;)
+	private LocalDate creationDate;
+	
+	@Column(name = &quot;revisionName&quot;)
+	private String revisionName;
+	
+	@Column(name = &quot;revisionDate&quot;)
+	private LocalDate revisionDate;
+	
+	@Column(name = &quot;dealName&quot;)
+	private String dealName;
+	
+	@Column(name = &quot;dealType&quot;)
+	private String dealType;
+	
+	@Column(name = &quot;sourceListId&quot;)
+	private String sourceListId;
+	
+	@Column(name = &quot;side&quot;)
+	private String side;
+	
+<span class="fc" id="L88">	public Trade() {</span>
+        // Empty constructor is used by JPA to create entities
+<span class="fc" id="L90">    }</span>
+
+<span class="fc" id="L92">    public Trade(String account, String type) {</span>
+<span class="fc" id="L93">        this.account = account;</span>
+<span class="fc" id="L94">        this.type = type;</span>
+<span class="fc" id="L95">    }</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

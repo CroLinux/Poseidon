@@ -38,6 +38,14 @@ public class Rating {
 		// Empty constructor is used by JPA to create entities
 	}
 
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param moodysRating
+	 * @param sandpRating
+	 * @param fitchRating
+	 * @param orderNumber
+	 */
 	public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {
 		this.moodysRating = moodysRating;
 		this.sandPRating = sandpRating;

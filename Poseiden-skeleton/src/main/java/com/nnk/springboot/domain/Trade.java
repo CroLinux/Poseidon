@@ -89,6 +89,12 @@ public class Trade {
         // Empty constructor is used by JPA to create entities
     }
 
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param account
+	 * @param type
+	 */
     public Trade(String account, String type) {
         this.account = account;
         this.type = type;

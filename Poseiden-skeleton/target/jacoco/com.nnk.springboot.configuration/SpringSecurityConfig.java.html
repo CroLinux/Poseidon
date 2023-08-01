@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpringSecurityConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.configuration</a> &gt; <span class="el_source">SpringSecurityConfig.java</span></div><h1>SpringSecurityConfig.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.configuration;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.nnk.springboot.repositories.UserRepository;
+
+import com.nnk.springboot.domain.User;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.Arrays;
+
+@Configuration
+@EnableWebSecurity
+<span class="fc" id="L28">public class SpringSecurityConfig  {</span>
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private AuthenticationConfiguration authenticationConfiguration;
+
+    @Bean
+    public AuthenticationManager authenticationManager() throws Exception {
+<span class="fc" id="L38">        return authenticationConfiguration.getAuthenticationManager();</span>
+    }
+ 
+	@Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+<span class="fc" id="L43">        http.authorizeHttpRequests(requests -&gt; requests</span>
+<span class="fc" id="L44">                .requestMatchers(&quot;/&quot;, &quot;/css/*&quot;, &quot;/login&quot;)</span>
+<span class="fc" id="L45">                .permitAll()</span>
+<span class="fc" id="L46">                .requestMatchers(&quot;/user/list&quot;)</span>
+<span class="fc" id="L47">                .hasAuthority(&quot;ADMIN&quot;)</span>
+<span class="fc" id="L48">                .anyRequest().authenticated())</span>
+<span class="fc" id="L49">                .formLogin(login -&gt; login</span>
+<span class="fc" id="L50">                        .failureUrl(&quot;/login?error&quot;)</span>
+<span class="fc" id="L51">                        .defaultSuccessUrl(&quot;/bidList/list&quot;)</span>
+<span class="fc" id="L52">                        .permitAll())</span>
+<span class="fc" id="L53">                .logout(logout -&gt; logout</span>
+<span class="fc" id="L54">                        .invalidateHttpSession(true).clearAuthentication(true)</span>
+<span class="fc" id="L55">                        .logoutRequestMatcher(new AntPathRequestMatcher(&quot;/app-logout&quot;))</span>
+<span class="fc" id="L56">                        .logoutSuccessUrl(&quot;/login&quot;)</span>
+<span class="fc" id="L57">                        .permitAll());</span>
+<span class="fc" id="L58">        http.authenticationProvider(authentication());</span>
+<span class="fc" id="L59">        return http.build();</span>
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authentication() {
+<span class="fc" id="L64">        DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();</span>
+<span class="fc" id="L65">        UserDetailsService userDetailsService = new UserDetailsService() {</span>
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+<span class="nc" id="L68">                User user = userRepository.findUserByUsername(username);</span>
+<span class="nc" id="L69">                GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());</span>
+<span class="nc" id="L70">                UserDetails details = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Arrays.asList(authority));</span>
+
+<span class="nc" id="L72">                return details;</span>
+            }
+        };
+<span class="fc" id="L75">        authentication.setUserDetailsService(userDetailsService);</span>
+<span class="fc" id="L76">        authentication.setPasswordEncoder(passwordEncoder());</span>
+<span class="fc" id="L77">        return authentication;</span>
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+<span class="fc" id="L82">        return new BCryptPasswordEncoder();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
