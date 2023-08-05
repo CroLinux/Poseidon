@@ -14,25 +14,43 @@ import com.nnk.springboot.repositories.RuleNameRepository;
 	@Autowired
 	private RuleNameRepository ruleNameRepository;
 	
-
+	/**
+	 * Get all the Rules from the database
+	 * 
+	 * @return
+	 */
     public Iterable&lt;RuleName&gt; getRuleNamesList() {
-<span class="nc" id="L19">        return ruleNameRepository.findAll();</span>
+<span class="fc" id="L23">        return ruleNameRepository.findAll();</span>
     }
 
-
+    /**
+     * Save/Modify a rule into the database
+     * 
+     * @param ruleName
+     * @return
+     */
     public RuleName saveRuleName(RuleName ruleName) {
-<span class="nc" id="L24">        return ruleNameRepository.save(ruleName);</span>
+<span class="fc" id="L33">        return ruleNameRepository.save(ruleName);</span>
     }
 
-
+    /**
+     * Get a specific rule from the database
+     * 
+     * @param id
+     * @return
+     */
     public Optional&lt;RuleName&gt; getRuleNameById(Integer id) {
-<span class="nc" id="L29">        return ruleNameRepository.findById(id);</span>
+<span class="fc" id="L43">        return ruleNameRepository.findById(id);</span>
     }
 
-
+    /**
+     * Delete a specific rule from the database
+     * 
+     * @param ruleName
+     */
     public void deleteRuleName(RuleName ruleName) {
-<span class="nc" id="L34">        ruleNameRepository.delete(ruleName);</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L52">        ruleNameRepository.delete(ruleName);</span>
+<span class="fc" id="L53">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

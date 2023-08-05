@@ -14,25 +14,43 @@ import com.nnk.springboot.repositories.TradeRepository;
 	@Autowired
 	private TradeRepository tradeRepository;
 	
-
+	/**
+	 * Get all the trades list from the database
+	 * 
+	 * @return
+	 */
     public Iterable&lt;Trade&gt; getTradesList() {
-<span class="nc" id="L19">        return tradeRepository.findAll();</span>
+<span class="fc" id="L23">        return tradeRepository.findAll();</span>
     }
 
-
+    /**
+     * Save/Modify a trade into the database
+     * 
+     * @param trade
+     * @return
+     */
     public Trade saveTrade(Trade trade) {
-<span class="nc" id="L24">        return tradeRepository.save(trade);</span>
+<span class="fc" id="L33">        return tradeRepository.save(trade);</span>
     }
 
-
+    /**
+     * Get a specific trade from the database
+     * 
+     * @param id
+     * @return
+     */
     public Optional&lt;Trade&gt; getTradeById(Integer id) {
-<span class="nc" id="L29">        return tradeRepository.findById(id);</span>
+<span class="fc" id="L43">        return tradeRepository.findById(id);</span>
     }
 
-
+    /**
+     * Delete a specific trade from the database
+     * 
+     * @param trade
+     */
     public void deleteTrade(Trade trade) {
-<span class="nc" id="L34">        tradeRepository.delete(trade);</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L52">        tradeRepository.delete(trade);</span>
+<span class="fc" id="L53">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

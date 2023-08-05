@@ -14,25 +14,43 @@ import com.nnk.springboot.repositories.RatingRepository;
 	@Autowired
 	private RatingRepository ratingRepository;
 	
-
+	/**
+	 * Get all the ratings from the database
+	 * 
+	 * @return
+	 */
     public Iterable&lt;Rating&gt; getRatingsList() {
-<span class="nc" id="L19">        return ratingRepository.findAll();</span>
+<span class="fc" id="L23">        return ratingRepository.findAll();</span>
     }
 
-
+    /**
+     * Save/Modify a rating in the database
+     * 
+     * @param rating
+     * @return
+     */
     public Rating saveRating(Rating rating) {
-<span class="nc" id="L24">        return ratingRepository.save(rating);</span>
+<span class="fc" id="L33">        return ratingRepository.save(rating);</span>
     }
 
-
+    /**
+     * Get a specific rating from the database
+     * 
+     * @param id
+     * @return
+     */
     public Optional&lt;Rating&gt; getRatingById(Integer id) {
-<span class="nc" id="L29">        return ratingRepository.findById(id);</span>
+<span class="fc" id="L43">        return ratingRepository.findById(id);</span>
     }
 
-
+    /**
+     * Delete a specific rating from the database
+     * 
+     * @param rating
+     */
     public void deleteRating(Rating rating) {
-<span class="nc" id="L34">        ratingRepository.delete(rating);</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L52">        ratingRepository.delete(rating);</span>
+<span class="fc" id="L53">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

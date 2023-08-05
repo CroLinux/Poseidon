@@ -8,9 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-<span class="pc bnc" id="L13" title="All 46 branches missed.">@Data</span>
+<span class="fc" id="L15">@Getter</span>
+<span class="fc" id="L16">@Setter</span>
 @Table(name = &quot;rating&quot;)
 public class Rating {
 
@@ -34,16 +37,24 @@ public class Rating {
 	@Column(name = &quot;orderNumber&quot;)
 	private Integer orderNumber;
 
-<span class="fc" id="L37">	public Rating() {</span>
+<span class="fc" id="L40">	public Rating() {</span>
 		// Empty constructor is used by JPA to create entities
-<span class="fc" id="L39">	}</span>
+<span class="fc" id="L42">	}</span>
 
-<span class="fc" id="L41">	public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {</span>
-<span class="fc" id="L42">		this.moodysRating = moodysRating;</span>
-<span class="fc" id="L43">		this.sandPRating = sandpRating;</span>
-<span class="fc" id="L44">		this.fitchRating = fitchRating;</span>
-<span class="fc" id="L45">		this.orderNumber = orderNumber;</span>
-<span class="fc" id="L46">	}</span>
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param moodysRating
+	 * @param sandpRating
+	 * @param fitchRating
+	 * @param orderNumber
+	 */
+<span class="fc" id="L52">	public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {</span>
+<span class="fc" id="L53">		this.moodysRating = moodysRating;</span>
+<span class="fc" id="L54">		this.sandPRating = sandpRating;</span>
+<span class="fc" id="L55">		this.fitchRating = fitchRating;</span>
+<span class="fc" id="L56">		this.orderNumber = orderNumber;</span>
+<span class="fc" id="L57">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

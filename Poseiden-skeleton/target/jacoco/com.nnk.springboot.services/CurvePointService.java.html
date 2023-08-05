@@ -20,7 +20,7 @@ import com.nnk.springboot.repositories.CurvePointRepository;
 	 * @return
 	 */
     public Iterable&lt;CurvePoint&gt; getCurvePointsList() {
-<span class="nc" id="L23">        return curvePointRepository.findAll();</span>
+<span class="fc" id="L23">        return curvePointRepository.findAll();</span>
     }
 
     /**
@@ -30,7 +30,7 @@ import com.nnk.springboot.repositories.CurvePointRepository;
      * @return
      */
     public CurvePoint saveCurvePoint(CurvePoint curvePoint) {
-<span class="nc" id="L33">        return curvePointRepository.save(curvePoint);</span>
+<span class="fc" id="L33">        return curvePointRepository.save(curvePoint);</span>
     }
 
     /**
@@ -40,17 +40,17 @@ import com.nnk.springboot.repositories.CurvePointRepository;
      * @return
      */
     public Optional&lt;CurvePoint&gt; getCurvePointById(Integer id) {
-<span class="nc" id="L43">        return curvePointRepository.findById(id);</span>
+<span class="fc" id="L43">        return curvePointRepository.findById(id);</span>
     }
 
     /**
-     * Delete the specified curve list from the database.
+     * Delete the specified curve point from the database.
      * 
      * @param curvePoint
      */
     public void deleteCurvePoint(CurvePoint curvePoint) {
-<span class="nc" id="L52">        curvePointRepository.delete(curvePoint);</span>
-<span class="nc" id="L53">    }</span>
+<span class="fc" id="L52">        curvePointRepository.delete(curvePoint);</span>
+<span class="fc" id="L53">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

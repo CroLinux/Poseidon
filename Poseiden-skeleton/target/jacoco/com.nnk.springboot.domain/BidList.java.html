@@ -9,12 +9,14 @@ import jakarta.persistence.Table;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
-<span class="pc bnc" id="L17" title="All 182 branches missed.">@Data</span>
+<span class="fc" id="L18">@Getter</span>
+<span class="fc" id="L19">@Setter</span>
 @Table(name = &quot;bidlist&quot;)
 public class BidList {
 
@@ -89,15 +91,22 @@ public class BidList {
 	@Column(name = &quot;side&quot;)
 	private String side;
 	
-<span class="fc" id="L92">	public BidList() {</span>
+<span class="fc" id="L94">	public BidList() {</span>
         // Empty constructor is used by JPA to create entities
-<span class="fc" id="L94">    }</span>
+<span class="fc" id="L96">    }</span>
 	
-<span class="fc" id="L96">	public BidList(String account, String type, Double bidQuantity ) {</span>
-<span class="fc" id="L97">        this.account = account;</span>
-<span class="fc" id="L98">        this.type = type;</span>
-<span class="fc" id="L99">        this.bidQuantity = bidQuantity;</span>
-<span class="fc" id="L100">    }</span>
+	/**
+	 * Constructor created for the original test provided
+	 * 
+	 * @param account
+	 * @param type
+	 * @param bidQuantity
+	 */
+<span class="fc" id="L105">	public BidList(String account, String type, Double bidQuantity ) {</span>
+<span class="fc" id="L106">        this.account = account;</span>
+<span class="fc" id="L107">        this.type = type;</span>
+<span class="fc" id="L108">        this.bidQuantity = bidQuantity;</span>
+<span class="fc" id="L109">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

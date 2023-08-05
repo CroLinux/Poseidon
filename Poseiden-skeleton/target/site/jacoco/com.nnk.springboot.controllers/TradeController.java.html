@@ -31,64 +31,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping(&quot;/trade/list&quot;)
     public String home(Model model, Authentication authentication)
     {
-<span class="nc" id="L34">    	Iterable&lt;Trade&gt; trades = tradeService.getTradesList();</span>
-<span class="nc" id="L35">		String remoteUser = userService.getCurrentUser(authentication);</span>
-<span class="nc" id="L36">		model.addAttribute(&quot;trades&quot;, trades);</span>
-<span class="nc" id="L37">		model.addAttribute(&quot;remoteUser&quot;, remoteUser);</span>
-<span class="nc" id="L38">		log.info(&quot;Page trade/list called by user : &quot; + remoteUser + &quot; list displayed: &quot; + trades);</span>
-<span class="nc" id="L39">        return &quot;trade/list&quot;;</span>
+<span class="fc" id="L34">    	Iterable&lt;Trade&gt; trades = tradeService.getTradesList();</span>
+<span class="fc" id="L35">		String remoteUser = userService.getCurrentUser(authentication);</span>
+<span class="fc" id="L36">		model.addAttribute(&quot;trades&quot;, trades);</span>
+<span class="fc" id="L37">		model.addAttribute(&quot;remoteUser&quot;, remoteUser);</span>
+<span class="fc" id="L38">		log.info(&quot;Page trade/list called by user : &quot; + remoteUser + &quot; list displayed: &quot; + trades);</span>
+<span class="fc" id="L39">        return &quot;trade/list&quot;;</span>
     }
 
     @GetMapping(&quot;/trade/add&quot;)
     public String addTrade(Trade bid) {
-<span class="nc" id="L44">    	log.info(&quot;Page trade/add called&quot;);</span>
-<span class="nc" id="L45">        return &quot;trade/add&quot;;</span>
+<span class="fc" id="L44">    	log.info(&quot;Page trade/add called&quot;);</span>
+<span class="fc" id="L45">        return &quot;trade/add&quot;;</span>
     }
 
     @PostMapping(&quot;/trade/validate&quot;)
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
-<span class="nc bnc" id="L50" title="All 2 branches missed.">    	if (!result.hasErrors()) {</span>
-<span class="nc" id="L51">    		log.info(&quot;Page trade/validate called without error&quot;);</span>
-<span class="nc" id="L52">			tradeService.saveTrade(trade);</span>
-<span class="nc" id="L53">			log.info(&quot;New trade added: &quot; + trade);</span>
-<span class="nc" id="L54">			model.addAttribute(&quot;trades&quot;, tradeService.getTradesList());</span>
-<span class="nc" id="L55">			return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    	if (!result.hasErrors()) {</span>
+<span class="fc" id="L51">    		log.info(&quot;Page trade/validate called without error&quot;);</span>
+<span class="fc" id="L52">			tradeService.saveTrade(trade);</span>
+<span class="fc" id="L53">			log.info(&quot;New trade added: &quot; + trade);</span>
+<span class="fc" id="L54">			model.addAttribute(&quot;trades&quot;, tradeService.getTradesList());</span>
+<span class="fc" id="L55">			return &quot;redirect:/trade/list&quot;;</span>
 		}
-<span class="nc" id="L57">    	log.info(&quot;Page trade/validate called but error&quot;);</span>
-<span class="nc" id="L58">        return &quot;trade/add&quot;;</span>
+<span class="fc" id="L57">    	log.info(&quot;Page trade/validate called but error&quot;);</span>
+<span class="fc" id="L58">        return &quot;trade/add&quot;;</span>
     }
 
     @GetMapping(&quot;/trade/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="nc" id="L63">    	Optional&lt;Trade&gt; tradeOptional = tradeService.getTradeById(id);</span>
-<span class="nc" id="L64">		Trade tradeToUpdate = tradeOptional.orElse(new Trade());</span>
-<span class="nc" id="L65">		model.addAttribute(&quot;trade&quot;, tradeToUpdate);</span>
-<span class="nc" id="L66">		log.info(&quot;Page trade/update called for: &quot; + tradeToUpdate);</span>
-<span class="nc" id="L67">        return &quot;trade/update&quot;;</span>
+<span class="fc" id="L63">    	Optional&lt;Trade&gt; tradeOptional = tradeService.getTradeById(id);</span>
+<span class="fc" id="L64">		Trade tradeToUpdate = tradeOptional.orElse(new Trade());</span>
+<span class="fc" id="L65">		model.addAttribute(&quot;trade&quot;, tradeToUpdate);</span>
+<span class="fc" id="L66">		log.info(&quot;Page trade/update called for: &quot; + tradeToUpdate);</span>
+<span class="fc" id="L67">        return &quot;trade/update&quot;;</span>
     }
 
     @PostMapping(&quot;/trade/update/{id}&quot;)
     public String updateTrade(@PathVariable(&quot;id&quot;) Integer id, @Valid Trade trade,
                              BindingResult result, Model model) {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">    	if (!result.hasErrors()) {</span>
-<span class="nc" id="L74">			trade.setTradeId(id);</span>
-<span class="nc" id="L75">			tradeService.saveTrade(trade);</span>
-<span class="nc" id="L76">			model.addAttribute(&quot;trades&quot;, tradeService.getTradesList());</span>
-<span class="nc" id="L77">			log.info(&quot;trade updated without error &quot; + trade);</span>
-<span class="nc" id="L78">			return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    	if (!result.hasErrors()) {</span>
+<span class="fc" id="L74">			trade.setTradeId(id);</span>
+<span class="fc" id="L75">			tradeService.saveTrade(trade);</span>
+<span class="fc" id="L76">			model.addAttribute(&quot;trades&quot;, tradeService.getTradesList());</span>
+<span class="fc" id="L77">			log.info(&quot;trade updated without error &quot; + trade);</span>
+<span class="fc" id="L78">			return &quot;redirect:/trade/list&quot;;</span>
     	}
-<span class="nc" id="L80">    	log.info(&quot;Can't update trade due to error&quot;);</span>
-<span class="nc" id="L81">        return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc" id="L80">    	log.info(&quot;Can't update trade due to error&quot;);</span>
+<span class="fc" id="L81">        return &quot;redirect:/trade/list&quot;;</span>
     }
 
     @GetMapping(&quot;/trade/delete/{id}&quot;)
     public String deleteTrade(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="nc" id="L86">    	Optional&lt;Trade&gt; tradeOptional = tradeService.getTradeById(id);</span>
-<span class="nc" id="L87">		Trade tradeToDelete = tradeOptional.orElse(new Trade());</span>
-<span class="nc" id="L88">		tradeService.deleteTrade(tradeToDelete);</span>
-<span class="nc" id="L89">		log.info(&quot;Page trade/delete called for: &quot; + tradeToDelete);</span>
-<span class="nc" id="L90">		log.info(&quot;trade deleted&quot;);</span>
-<span class="nc" id="L91">        return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc" id="L86">    	Optional&lt;Trade&gt; tradeOptional = tradeService.getTradeById(id);</span>
+<span class="fc" id="L87">		Trade tradeToDelete = tradeOptional.orElse(new Trade());</span>
+<span class="fc" id="L88">		tradeService.deleteTrade(tradeToDelete);</span>
+<span class="fc" id="L89">		log.info(&quot;Page trade/delete called for: &quot; + tradeToDelete);</span>
+<span class="fc" id="L90">		log.info(&quot;trade deleted&quot;);</span>
+<span class="fc" id="L91">        return &quot;redirect:/trade/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

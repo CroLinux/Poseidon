@@ -10,29 +10,46 @@ import com.nnk.springboot.repositories.BidListRepository;
 
 @Service
 <span class="fc" id="L12">public class BidListService {</span>
-	
+
 	@Autowired
 	private BidListRepository bidListRepository;
-	
 
-    public Iterable&lt;BidList&gt; getBidListsList() {
-<span class="nc" id="L19">        return bidListRepository.findAll();</span>
-    }
+	/**
+	 * Get all the Bid list from the database
+	 * 
+	 * @return
+	 */
+	public Iterable&lt;BidList&gt; getBidListsList() {
+<span class="fc" id="L23">		return bidListRepository.findAll();</span>
+	}
 
+	/**
+	 * Save/Modify a bid list into the database
+	 * 
+	 * @param bidList
+	 * @return
+	 */
+	public BidList saveBidList(BidList bidList) {
+<span class="fc" id="L33">		return bidListRepository.save(bidList);</span>
+	}
 
-    public BidList saveBidList(BidList bidList) {
-<span class="nc" id="L24">        return bidListRepository.save(bidList);</span>
-    }
+	/**
+	 * Get a specific bid list from the database
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Optional&lt;BidList&gt; getBidListById(Integer id) {
+<span class="fc" id="L43">		return bidListRepository.findById(id);</span>
+	}
 
-
-    public Optional&lt;BidList&gt; getBidListById(Integer id) {
-<span class="nc" id="L29">        return bidListRepository.findById(id);</span>
-    }
-
-
-    public void deleteBidList(BidList bidList) {
-<span class="nc" id="L34">        bidListRepository.delete(bidList);</span>
-<span class="nc" id="L35">    }</span>
+	/**
+	 * Delete a specific bid list from the database
+	 * @param bidList
+	 */
+	public void deleteBidList(BidList bidList) {
+<span class="fc" id="L51">		bidListRepository.delete(bidList);</span>
+<span class="fc" id="L52">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

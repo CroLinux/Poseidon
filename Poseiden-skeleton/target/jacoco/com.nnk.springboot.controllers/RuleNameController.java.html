@@ -32,64 +32,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping(&quot;/ruleName/list&quot;)
     public String home(Model model, Authentication authentication)
     {
-<span class="nc" id="L35">    	Iterable&lt;RuleName&gt; ruleNames = ruleNameService.getRuleNamesList();</span>
-<span class="nc" id="L36">		String remoteUser = userService.getCurrentUser(authentication);</span>
-<span class="nc" id="L37">		model.addAttribute(&quot;ruleNames&quot;, ruleNames);</span>
-<span class="nc" id="L38">		model.addAttribute(&quot;remoteUser&quot;, remoteUser);</span>
-<span class="nc" id="L39">		log.info(&quot;Page ruleName/list called by user : &quot; + remoteUser + &quot; list displayed: &quot; + ruleNames);</span>
-<span class="nc" id="L40">        return &quot;ruleName/list&quot;;</span>
+<span class="fc" id="L35">    	Iterable&lt;RuleName&gt; ruleNames = ruleNameService.getRuleNamesList();</span>
+<span class="fc" id="L36">		String remoteUser = userService.getCurrentUser(authentication);</span>
+<span class="fc" id="L37">		model.addAttribute(&quot;ruleNames&quot;, ruleNames);</span>
+<span class="fc" id="L38">		model.addAttribute(&quot;remoteUser&quot;, remoteUser);</span>
+<span class="fc" id="L39">		log.info(&quot;Page ruleName/list called by user : &quot; + remoteUser + &quot; list displayed: &quot; + ruleNames);</span>
+<span class="fc" id="L40">        return &quot;ruleName/list&quot;;</span>
     }
 
     @GetMapping(&quot;/ruleName/add&quot;)
     public String addRuleForm(RuleName bid) {
-<span class="nc" id="L45">    	log.info(&quot;Page ruleName/add called&quot;);</span>
-<span class="nc" id="L46">        return &quot;ruleName/add&quot;;</span>
+<span class="fc" id="L45">    	log.info(&quot;Page ruleName/add called&quot;);</span>
+<span class="fc" id="L46">        return &quot;ruleName/add&quot;;</span>
     }
 
     @PostMapping(&quot;/ruleName/validate&quot;)
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
-<span class="nc bnc" id="L51" title="All 2 branches missed.">    	if (!result.hasErrors()) {</span>
-<span class="nc" id="L52">    		log.info(&quot;Page ruleName/validate called without error&quot;);</span>
-<span class="nc" id="L53">			ruleNameService.saveRuleName(ruleName);</span>
-<span class="nc" id="L54">			log.info(&quot;New ruleName added: &quot; + ruleName);</span>
-<span class="nc" id="L55">			model.addAttribute(&quot;ruleNames&quot;, ruleNameService.getRuleNamesList());</span>
-<span class="nc" id="L56">			return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    	if (!result.hasErrors()) {</span>
+<span class="fc" id="L52">    		log.info(&quot;Page ruleName/validate called without error&quot;);</span>
+<span class="fc" id="L53">			ruleNameService.saveRuleName(ruleName);</span>
+<span class="fc" id="L54">			log.info(&quot;New ruleName added: &quot; + ruleName);</span>
+<span class="fc" id="L55">			model.addAttribute(&quot;ruleNames&quot;, ruleNameService.getRuleNamesList());</span>
+<span class="fc" id="L56">			return &quot;redirect:/ruleName/list&quot;;</span>
 		}
-<span class="nc" id="L58">    	log.info(&quot;Page ruleName/validate called but error&quot;);</span>
-<span class="nc" id="L59">        return &quot;ruleName/add&quot;;</span>
+<span class="fc" id="L58">    	log.info(&quot;Page ruleName/validate called but error&quot;);</span>
+<span class="fc" id="L59">        return &quot;ruleName/add&quot;;</span>
     }
 
     @GetMapping(&quot;/ruleName/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="nc" id="L64">    	Optional&lt;RuleName&gt; ruleNameOptional = ruleNameService.getRuleNameById(id);</span>
-<span class="nc" id="L65">		RuleName ruleNameToUpdate = ruleNameOptional.orElse(new RuleName());</span>
-<span class="nc" id="L66">		model.addAttribute(&quot;ruleName&quot;, ruleNameToUpdate);</span>
-<span class="nc" id="L67">		log.info(&quot;Page ruleName/update called for: &quot; + ruleNameToUpdate);</span>
-<span class="nc" id="L68">        return &quot;ruleName/update&quot;;</span>
+<span class="fc" id="L64">    	Optional&lt;RuleName&gt; ruleNameOptional = ruleNameService.getRuleNameById(id);</span>
+<span class="fc" id="L65">		RuleName ruleNameToUpdate = ruleNameOptional.orElse(new RuleName());</span>
+<span class="fc" id="L66">		model.addAttribute(&quot;ruleName&quot;, ruleNameToUpdate);</span>
+<span class="fc" id="L67">		log.info(&quot;Page ruleName/update called for: &quot; + ruleNameToUpdate);</span>
+<span class="fc" id="L68">        return &quot;ruleName/update&quot;;</span>
     }
 
     @PostMapping(&quot;/ruleName/update/{id}&quot;)
     public String updateRuleName(@PathVariable(&quot;id&quot;) Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
-<span class="nc bnc" id="L74" title="All 2 branches missed.">    	if (!result.hasErrors()) {</span>
-<span class="nc" id="L75">			ruleName.setId(id);</span>
-<span class="nc" id="L76">			ruleNameService.saveRuleName(ruleName);</span>
-<span class="nc" id="L77">			model.addAttribute(&quot;ruleNames&quot;, ruleNameService.getRuleNamesList());</span>
-<span class="nc" id="L78">			log.info(&quot;ruleName updated without error &quot; + ruleName);</span>
-<span class="nc" id="L79">			return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">    	if (!result.hasErrors()) {</span>
+<span class="fc" id="L75">			ruleName.setId(id);</span>
+<span class="fc" id="L76">			ruleNameService.saveRuleName(ruleName);</span>
+<span class="fc" id="L77">			model.addAttribute(&quot;ruleNames&quot;, ruleNameService.getRuleNamesList());</span>
+<span class="fc" id="L78">			log.info(&quot;ruleName updated without error &quot; + ruleName);</span>
+<span class="fc" id="L79">			return &quot;redirect:/ruleName/list&quot;;</span>
     	}
-<span class="nc" id="L81">    	log.info(&quot;Can't update ruleName due to error&quot;);</span>
-<span class="nc" id="L82">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L81">    	log.info(&quot;Can't update ruleName due to error&quot;);</span>
+<span class="fc" id="L82">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 
     @GetMapping(&quot;/ruleName/delete/{id}&quot;)
     public String deleteRuleName(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="nc" id="L87">    	Optional&lt;RuleName&gt; ruleNameOptional = ruleNameService.getRuleNameById(id);</span>
-<span class="nc" id="L88">		RuleName ruleNameToDelete = ruleNameOptional.orElse(new RuleName());</span>
-<span class="nc" id="L89">		ruleNameService.deleteRuleName(ruleNameToDelete);</span>
-<span class="nc" id="L90">		log.info(&quot;Page ruleName/delete called for: &quot; + ruleNameToDelete);</span>
-<span class="nc" id="L91">		log.info(&quot;ruleName deleted&quot;);</span>
-<span class="nc" id="L92">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L87">    	Optional&lt;RuleName&gt; ruleNameOptional = ruleNameService.getRuleNameById(id);</span>
+<span class="fc" id="L88">		RuleName ruleNameToDelete = ruleNameOptional.orElse(new RuleName());</span>
+<span class="fc" id="L89">		ruleNameService.deleteRuleName(ruleNameToDelete);</span>
+<span class="fc" id="L90">		log.info(&quot;Page ruleName/delete called for: &quot; + ruleNameToDelete);</span>
+<span class="fc" id="L91">		log.info(&quot;ruleName deleted&quot;);</span>
+<span class="fc" id="L92">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

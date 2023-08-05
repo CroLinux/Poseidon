@@ -13,26 +13,27 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
 
 	@RequestMapping("/")
-	public String home(Model model) {
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	public String slach(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-	    // Verification if the user is already connected
-	    if (authentication != null && authentication.isAuthenticated()) {
-	        log.info("User is already authenticated, redirecting to /home");
-	        return "redirect:/bidList/list";
-	    } else {
-	        log.info("User is not authenticated, redirecting to /login");
-	        return "redirect:/login";
-	    }
+		// Verification if the user is already connected
+		// if (authentication != null && authentication.isAuthenticated()) {
+		if (authentication != null) {
+			log.info("User is already authenticated, redirecting to /home");
+			return "redirect:/bidList/list";
+		} else {
+			log.info("User is not authenticated, redirecting to /login");
+			return "redirect:/login";
+		}
 	}
 
 	@RequestMapping("/home")
-	public String homeOriginal(Model model) {
+	public String home(Model model) {
 
 		log.info("redirect from / to /home");
 		return "home";
 	}
-	
+
 	@RequestMapping("/admin/home")
 	public String adminHome(Model model) {
 		log.info("redirect from /admin/home to /user/list");
