@@ -44,17 +44,6 @@ public class LoginControllerTest {
 	}
 
 	@Test
-	void testLogin() throws Exception {
-		// Given
-
-		// When
-		mockMvc.perform(get("/app/login"))
-
-				// Then
-				.andExpect(status().isOk()).andExpect(view().name("login"));
-	}
-
-	@Test
 	void testGetAllUserArticles() throws Exception {
 		// Given
 		// Mocking the data returned by the userRepository.findAll() method

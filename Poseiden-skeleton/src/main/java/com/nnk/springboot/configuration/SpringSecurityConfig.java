@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.nnk.springboot.repositories.UserRepository;
@@ -39,15 +40,19 @@ public class SpringSecurityConfig  {
         return authenticationConfiguration.getAuthenticationManager();
     }
  
-	@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(requests -> requests
-                .requestMatchers("/", "/home", "/css/*", "/login", "/error")
-                .permitAll()
-                .requestMatchers("/user/list")
-                .hasAuthority("ADMIN")
-                .anyRequest().authenticated())
+        http
+                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/", "/home", "/css/*", "/img/*", "/login", "/error")
+                        .permitAll()
+                        .requestMatchers("/user/list")
+                        .hasAuthority("ADMIN")
+                        .anyRequest().authenticated())
                 .formLogin(login -> login
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/bidList/list")
                         .permitAll())
                 .logout(logout -> logout

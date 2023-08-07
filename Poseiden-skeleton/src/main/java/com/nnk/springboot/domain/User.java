@@ -89,6 +89,11 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", fullname=" + fullname
 				+ ", role=" + role + "]";
 	}
+
+	public User orElseThrow(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
     
