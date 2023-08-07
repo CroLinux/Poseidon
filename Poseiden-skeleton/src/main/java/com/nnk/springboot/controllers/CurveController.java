@@ -74,7 +74,7 @@ public class CurveController {
 			curvePoint.setId(id);
 			curvePointService.saveCurvePoint(curvePoint);
 			model.addAttribute("curvePoints", curvePointService.getCurvePointsList());
-			log.info("bidList updated without error " + curvePoint);
+			log.info("curvePoint updated without error " + curvePoint);
 			return "redirect:/curvePoint/list";
 		}
 		log.info("Can't update curvePoint due to error");

@@ -63,37 +63,7 @@ public class SpringSecurityConfig  {
         http.authenticationProvider(authentication());       
         return http.build();
     }
-	/**
- 	@Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-         http.csrf(withDefaults())
-                 .authorizeHttpRequests((requests) -> requests
-                                 .requestMatchers("/login").permitAll()
-                                 .requestMatchers("/").permitAll()
-                                 .requestMatchers("/css/**").permitAll()
-                                 .requestMatchers("/home").permitAll()
-                                 .requestMatchers("/error").permitAll()
-                                 .requestMatchers("/user/list").hasAuthority("ADMIN")
-                                 .anyRequest().authenticated()
-                 )
-                 .formLogin((form) -> form
-                		    .loginProcessingUrl("/login")
-                                 .defaultSuccessUrl("/bidList/list")
-                                 .permitAll()
-                 )
-                 .logout((logout) -> logout
 
-                         .invalidateHttpSession(true).clearAuthentication(true)
-                		    .deleteCookies("JSESSIONID", "remember-me") // Optionally, specify additional cookies you want to delete
-                		    .deleteCookies()
-                		    .clearAuthentication(true)
-                		    .invalidateHttpSession(true)
-                		    .logoutSuccessUrl("/login")
-                		    .permitAll())
-                 .exceptionHandling(handling -> handling.accessDeniedPage("/access-denied"));
-         return http.build();
-     }
-*/
     @Bean
     public DaoAuthenticationProvider authentication() {
         DaoAuthenticationProvider authentication = new DaoAuthenticationProvider();
