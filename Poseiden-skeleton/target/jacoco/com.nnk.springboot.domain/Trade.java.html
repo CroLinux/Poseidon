@@ -10,13 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-<span class="fc" id="L18">@Getter</span>
-<span class="fc" id="L19">@Setter</span>
+<span class="fc" id="L17">@Getter</span>
+<span class="fc" id="L18">@Setter</span>
 @Table(name = &quot;trade&quot;)
 public class Trade {
     
@@ -88,9 +87,9 @@ public class Trade {
 	@Column(name = &quot;side&quot;)
 	private String side;
 	
-<span class="fc" id="L91">	public Trade() {</span>
+<span class="fc" id="L90">	public Trade() {</span>
         // Empty constructor is used by JPA to create entities
-<span class="fc" id="L93">    }</span>
+<span class="fc" id="L92">    }</span>
 
 	/**
 	 * Constructor created for the original test provided
@@ -98,10 +97,22 @@ public class Trade {
 	 * @param account
 	 * @param type
 	 */
-<span class="fc" id="L101">    public Trade(String account, String type) {</span>
-<span class="fc" id="L102">        this.account = account;</span>
-<span class="fc" id="L103">        this.type = type;</span>
-<span class="fc" id="L104">    }</span>
+<span class="fc" id="L100">    public Trade(String account, String type) {</span>
+<span class="fc" id="L101">        this.account = account;</span>
+<span class="fc" id="L102">        this.type = type;</span>
+<span class="fc" id="L103">    }</span>
+
+	@Override
+	public String toString() {
+<span class="fc" id="L107">		return &quot;Trade [tradeId=&quot; + tradeId + &quot;, account=&quot; + account + &quot;, type=&quot; + type + &quot;, buyQuantity=&quot; + buyQuantity</span>
+<span class="fc" id="L108">				+ &quot;, sellQuantity=&quot; + sellQuantity + &quot;, buyPrice=&quot; + buyPrice + &quot;, sellPrice=&quot; + sellPrice</span>
+<span class="fc" id="L109">				+ &quot;, benchmark=&quot; + benchmark + &quot;, tradeDate=&quot; + tradeDate + &quot;, security=&quot; + security + &quot;, status=&quot;</span>
+<span class="fc" id="L110">				+ status + &quot;, trader=&quot; + trader + &quot;, book=&quot; + book + &quot;, creationName=&quot; + creationName</span>
+<span class="fc" id="L111">				+ &quot;, creationDate=&quot; + creationDate + &quot;, revisionName=&quot; + revisionName + &quot;, revisionDate=&quot; + revisionDate</span>
+<span class="fc" id="L112">				+ &quot;, dealName=&quot; + dealName + &quot;, dealType=&quot; + dealType + &quot;, sourceListId=&quot; + sourceListId + &quot;, side=&quot;</span>
+<span class="fc" id="L113">				+ side + &quot;]&quot;;</span>
+	}
 	
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

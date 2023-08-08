@@ -55,4 +55,11 @@ public class CurvePoint {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "CurvePoint [id=" + id + ", curveId=" + curveId + ", asOfDate=" + asOfDate + ", term=" + term
+				+ ", value=" + value + ", creationDate=" + creationDate + "]";
+	}
+
+	
 }

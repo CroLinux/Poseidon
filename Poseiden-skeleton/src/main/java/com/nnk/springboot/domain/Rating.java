@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -56,4 +55,11 @@ public class Rating {
 		this.orderNumber = orderNumber;
 	}
 
+	@Override
+	public String toString() {
+		return "Rating [id=" + id + ", moodysRating=" + moodysRating + ", sandPRating=" + sandPRating + ", fitchRating="
+				+ fitchRating + ", orderNumber=" + orderNumber + "]";
+	}
+
+	
 }

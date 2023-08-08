@@ -20,14 +20,14 @@ public class HomeController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		// Verification if the user is already connected
-		//if (authentication != null && authentication.isAuthenticated()) {
-		if (authentication != null) {
+		if (authentication != null && authentication.isAuthenticated()) {
+		//if (authentication != null) {
 			log.info("/ called and User is already authenticated, redirecting to /bidList/list");
 			return "redirect:/bidList/list";
-		} else {
+		}
 			log.info("/ called and User is not authenticated, redirecting to /login");
 			return "redirect:/login";
-		}
+		
 	}
 
 	@RequestMapping("/home")

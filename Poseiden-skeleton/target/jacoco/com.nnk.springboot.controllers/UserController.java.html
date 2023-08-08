@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
     public String home(Model model)
     {
 <span class="fc" id="L28">        model.addAttribute(&quot;users&quot;, userRepository.findAll());</span>
-<span class="fc" id="L29">        log.info(&quot;Page user/list called&quot;);</span>
+<span class="fc" id="L29">        log.info(&quot;Page user/list called, list displayed: &quot; + userRepository.findAll());</span>
 <span class="fc" id="L30">        return &quot;user/list&quot;;</span>
     }
 
@@ -38,9 +38,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
     @PostMapping(&quot;/user/validate&quot;)
     public String validate(@Valid User user, BindingResult result, Model model) {
-<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (!result.hasErrors()) {</span>
-<span class="fc" id="L42">        	log.info(&quot;Page user/validate called without error&quot;);</span>
-<span class="fc" id="L43">            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if (!result.hasErrors()) {</span>
+<span class="nc" id="L42">        	log.info(&quot;Page user/validate called without error&quot;);</span>
+<span class="nc" id="L43">            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();</span>
 <span class="nc" id="L44">            user.setPassword(encoder.encode(user.getPassword()));</span>
 <span class="nc" id="L45">            userRepository.save(user);</span>
 <span class="nc" id="L46">            log.info(&quot;New user added: &quot; + user.getUsername());</span>
@@ -63,12 +63,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @PostMapping(&quot;/user/update/{id}&quot;)
     public String updateUser(@PathVariable(&quot;id&quot;) Integer id, @Valid User user,
                              BindingResult result, Model model) {
-<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        if (result.hasErrors()) {</span>
 <span class="fc" id="L67">        	log.info(&quot;Can't update user due to error&quot;);</span>
 <span class="fc" id="L68">            return &quot;user/update&quot;;</span>
         }
 
-<span class="fc" id="L71">        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();</span>
+<span class="nc" id="L71">        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();</span>
 <span class="nc" id="L72">        user.setPassword(encoder.encode(user.getPassword()));</span>
 <span class="nc" id="L73">        user.setId(id);</span>
 <span class="nc" id="L74">        userRepository.save(user);</span>

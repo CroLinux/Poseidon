@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
 
@@ -94,4 +96,18 @@ public class HomeControllerTest {
 				// Then
 				.andExpect(status().is3xxRedirection()).andExpect(redirectedUrl("/user/list"));
 	}
+	
+	@Test
+	void testLoginAuthenticated() throws Exception {
+	    // Given
+	    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+	    // When
+	    mockMvc.perform(get("/login"))
+
+	            // Then
+	            .andExpect(status().is3xxRedirection())
+	            .andExpect(redirectedUrl("/bidList/list"));
+	}
+	
 }

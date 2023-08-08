@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -102,5 +101,17 @@ public class Trade {
         this.account = account;
         this.type = type;
     }
+
+	@Override
+	public String toString() {
+		return "Trade [tradeId=" + tradeId + ", account=" + account + ", type=" + type + ", buyQuantity=" + buyQuantity
+				+ ", sellQuantity=" + sellQuantity + ", buyPrice=" + buyPrice + ", sellPrice=" + sellPrice
+				+ ", benchmark=" + benchmark + ", tradeDate=" + tradeDate + ", security=" + security + ", status="
+				+ status + ", trader=" + trader + ", book=" + book + ", creationName=" + creationName
+				+ ", creationDate=" + creationDate + ", revisionName=" + revisionName + ", revisionDate=" + revisionDate
+				+ ", dealName=" + dealName + ", dealType=" + dealType + ", sourceListId=" + sourceListId + ", side="
+				+ side + "]";
+	}
 	
+    
 }

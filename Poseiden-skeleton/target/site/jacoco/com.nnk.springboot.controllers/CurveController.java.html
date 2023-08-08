@@ -74,7 +74,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 <span class="fc" id="L74">			curvePoint.setId(id);</span>
 <span class="fc" id="L75">			curvePointService.saveCurvePoint(curvePoint);</span>
 <span class="fc" id="L76">			model.addAttribute(&quot;curvePoints&quot;, curvePointService.getCurvePointsList());</span>
-<span class="fc" id="L77">			log.info(&quot;bidList updated without error &quot; + curvePoint);</span>
+<span class="fc" id="L77">			log.info(&quot;curvePoint updated without error &quot; + curvePoint);</span>
 <span class="fc" id="L78">			return &quot;redirect:/curvePoint/list&quot;;</span>
 		}
 <span class="fc" id="L80">		log.info(&quot;Can't update curvePoint due to error&quot;);</span>

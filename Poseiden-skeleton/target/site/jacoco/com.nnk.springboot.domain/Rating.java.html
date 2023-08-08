@@ -7,13 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-<span class="fc" id="L15">@Getter</span>
-<span class="fc" id="L16">@Setter</span>
+<span class="fc" id="L14">@Getter</span>
+<span class="fc" id="L15">@Setter</span>
 @Table(name = &quot;rating&quot;)
 public class Rating {
 
@@ -37,9 +36,9 @@ public class Rating {
 	@Column(name = &quot;orderNumber&quot;)
 	private Integer orderNumber;
 
-<span class="fc" id="L40">	public Rating() {</span>
+<span class="fc" id="L39">	public Rating() {</span>
 		// Empty constructor is used by JPA to create entities
-<span class="fc" id="L42">	}</span>
+<span class="fc" id="L41">	}</span>
 
 	/**
 	 * Constructor created for the original test provided
@@ -49,12 +48,19 @@ public class Rating {
 	 * @param fitchRating
 	 * @param orderNumber
 	 */
-<span class="fc" id="L52">	public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {</span>
-<span class="fc" id="L53">		this.moodysRating = moodysRating;</span>
-<span class="fc" id="L54">		this.sandPRating = sandpRating;</span>
-<span class="fc" id="L55">		this.fitchRating = fitchRating;</span>
-<span class="fc" id="L56">		this.orderNumber = orderNumber;</span>
-<span class="fc" id="L57">	}</span>
+<span class="fc" id="L51">	public Rating(String moodysRating, String sandpRating, String fitchRating, Integer orderNumber) {</span>
+<span class="fc" id="L52">		this.moodysRating = moodysRating;</span>
+<span class="fc" id="L53">		this.sandPRating = sandpRating;</span>
+<span class="fc" id="L54">		this.fitchRating = fitchRating;</span>
+<span class="fc" id="L55">		this.orderNumber = orderNumber;</span>
+<span class="fc" id="L56">	}</span>
 
+	@Override
+	public String toString() {
+<span class="fc" id="L60">		return &quot;Rating [id=&quot; + id + &quot;, moodysRating=&quot; + moodysRating + &quot;, sandPRating=&quot; + sandPRating + &quot;, fitchRating=&quot;</span>
+<span class="fc" id="L61">				+ fitchRating + &quot;, orderNumber=&quot; + orderNumber + &quot;]&quot;;</span>
+	}
+
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

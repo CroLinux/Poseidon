@@ -26,7 +26,7 @@ public class UserController {
     public String home(Model model)
     {
         model.addAttribute("users", userRepository.findAll());
-        log.info("Page user/list called");
+        log.info("Page user/list called, list displayed: " + userRepository.findAll());
         return "user/list";
     }
 
